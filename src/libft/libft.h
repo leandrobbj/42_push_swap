@@ -6,7 +6,7 @@
 /*   By: lbraga <lbraga@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:47:31 by lbraga            #+#    #+#             */
-/*   Updated: 2025/10/24 18:16:47 by lbraga           ###   ########.fr       */
+/*   Updated: 2025/11/03 19:05:04 by lbraga           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# include <limits.h>
 # include <stdio.h>
 
 //int
@@ -66,5 +67,6 @@ int		f_uint(size_t n, char c);
 //novas
 int		ft_isspace(int c);
 long	ft_atol(const char *nptr);
+long	ft_atol_intoverflow(const char *nptr);
 
 #endif
