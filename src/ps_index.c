@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ps_index.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbraga <lbraga@student.42lisboa.com>>      +#+  +:+       +#+        */
+/*   By: lbraga <lbraga@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 02:53:16 by lbraga            #+#    #+#             */
-/*   Updated: 2025/10/30 02:40:23 by lbraga           ###   ########.fr       */
+/*   Updated: 2025/11/03 18:59:14 by lbraga           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	set_idx(t_stk *nod)
+void	index_set(t_stk *nod)
 {
 	int		i;
 	t_stk	*max;
 
-	rst_idx(nod);
-	i = size_stk(nod);
+	index_reset(nod);
+	i = stack_size(nod);
 	while (i--)
 	{
-		max = max_nod(nod);
+		max = node_max(nod);
 		max->idx = i;
 	}
 }
 
-t_stk	*max_nod(t_stk *nod)
+t_stk	*node_max(t_stk *nod)
 {
 	t_stk	*max;
 
@@ -41,7 +41,7 @@ t_stk	*max_nod(t_stk *nod)
 	return (max);
 }
 
-void	rst_idx(t_stk *nod)
+void	index_reset(t_stk *nod)
 {
 	while (nod)
 	{
@@ -50,7 +50,7 @@ void	rst_idx(t_stk *nod)
 	}
 }
 
-int	size_stk(t_stk *nod)
+int	stack_size(t_stk *nod)
 {
 	int	i;
 
@@ -63,7 +63,7 @@ int	size_stk(t_stk *nod)
 	return (i);
 }
 
-int	min_idx(t_stk *nod)
+int	index_min(t_stk *nod)
 {
 	int	i;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbraga <lbraga@student.42lisboa.com>>      +#+  +:+       +#+        */
+/*   By: lbraga <lbraga@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 22:40:08 by lbraga            #+#    #+#             */
-/*   Updated: 2025/10/30 04:25:01 by lbraga           ###   ########.fr       */
+/*   Updated: 2025/11/03 19:02:53 by lbraga           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	radix_sort(t_stk **a, t_stk **b, int idx_max)
 	int	j;
 	int	bit_max;
 
-	set_idx(*a);
+	index_set(*a);
 	bit_max = 0;
 	while (idx_max >> bit_max)
 		bit_max++;
@@ -31,11 +31,11 @@ void	radix_sort(t_stk **a, t_stk **b, int idx_max)
 			if (((*a)->idx >> i) & 1)
 				ra(a);
 			else
-				pu(b, a, 'b');
+				push(b, a, 'b');
 			j++;
 		}
 		while (*b)
-			pu(a, b, 'a');
+			push(a, b, 'a');
 		i++;
 	}
 }
@@ -46,12 +46,12 @@ void	sort_two(t_stk **a)
 		sa(a);
 }
 
-void	sort_thr(t_stk **a)
+void	sort_three(t_stk **a)
 {
 	t_stk	*max;
 
-	rst_idx(*a);
-	max = max_nod(*a);
+	index_reset(*a);
+	max = node_max(*a);
 	if (max == *a)
 		ra(a);
 	else if (max == (*a)->nxt)
@@ -59,14 +59,14 @@ void	sort_thr(t_stk **a)
 	sort_two(a);
 }
 
-void	sort_siz(t_stk **a, t_stk **b, int size)
+void	sort_size(t_stk **a, t_stk **b, int size)
 {
 	int	i;
 
 	i = size;
 	while (i-- > 3)
 		pb_min(a, b);
-	sort_thr(a);
+	sort_three(a);
 	while (size-- > 3)
-		pu(a, b, 'a');
+		push(a, b, 'a');
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_moves.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbraga <lbraga@student.42lisboa.com>>      +#+  +:+       +#+        */
+/*   By: lbraga <lbraga@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 05:21:58 by lbraga            #+#    #+#             */
-/*   Updated: 2025/10/30 02:50:43 by lbraga           ###   ########.fr       */
+/*   Updated: 2025/11/03 19:02:51 by lbraga           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ void	pb_min(t_stk **a, t_stk **b)
 	int	idx;
 	int	siz;
 
-	set_idx(*a);
-	idx = min_idx(*a);
-	siz = size_stk(*a);
+	index_set(*a);
+	idx = index_min(*a);
+	siz = stack_size(*a);
 	if (idx <= siz / 2)
 		while (idx--)
 			ra(a);
 	else
 		while (idx++ < siz)
 			rra(a);
-	pu(b, a, 'b');
+	push(b, a, 'b');
 }
 
-void	pu(t_stk **dst, t_stk **src, char c)
+void	push(t_stk **dst, t_stk **src, char c)
 {
 	t_stk	*nod;
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ps_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbraga <lbraga@student.42lisboa.com>>      +#+  +:+       +#+        */
+/*   By: lbraga <lbraga@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 22:01:29 by lbraga            #+#    #+#             */
-/*   Updated: 2025/10/30 04:15:22 by lbraga           ###   ########.fr       */
+/*   Updated: 2025/11/03 18:57:54 by lbraga           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	chk_nbr(char *av)
+int	check_number(char *av)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ int	chk_nbr(char *av)
 	return (1);
 }
 
-int	chk_dup(t_stk *nod, int nbr)
+int	check_duplicate(t_stk *nod, int nbr)
 {
 	while (nod)
 	{
@@ -37,7 +37,7 @@ int	chk_dup(t_stk *nod, int nbr)
 	return (1);
 }
 
-int	chk_srt(t_stk *nod)
+int	check_sort(t_stk *nod)
 {
 	while (nod && nod->nxt)
 	{
