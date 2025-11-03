@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbraga <lbraga@student.42lisboa.com>>      +#+  +:+       +#+        */
+/*   By: lbraga <lbraga@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 22:20:29 by lbraga            #+#    #+#             */
-/*   Updated: 2025/10/30 04:24:36 by lbraga           ###   ########.fr       */
+/*   Updated: 2025/11/03 19:03:46 by lbraga           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	main(int ac, char **av)
 		av = ft_split(av[1], ' ');
 	else
 		av = av + 1;
-	check_parse_stk(&a, ac, av);
-	sort_stk(&a, &b);
+	check_parse_stack(&a, ac, av);
+	sort_stack(&a, &b);
 	exit_routine(a, ac, av, 0);
 }
 
-void	check_parse_stk(t_stk **a, int ac, char **av)
+void	check_parse_stack(t_stk **a, int ac, char **av)
 {
 	int		i;
 	long	nbr;
@@ -39,22 +39,22 @@ void	check_parse_stk(t_stk **a, int ac, char **av)
 	i = 0;
 	while (av[i])
 	{
-		if (!chk_nbr(av[i]))
+		if (!av[i][0] || !check_number(av[i]))
 			exit_routine(*a, ac, av, 2);
-		nbr = ft_atol(av[i]);
-		if (nbr > INT_MAX || nbr < INT_MIN)
+		nbr = ft_atol_intoverflow(av[i]);
+		if (nbr == LONG_MAX)
 			exit_routine(*a, ac, av, 3);
-		if (!chk_dup(*a, (int)nbr))
+		if (!check_duplicate(*a, (int)nbr))
 			exit_routine(*a, ac, av, 4);
 		new = malloc(sizeof(t_stk));
 		if (!new)
 			exit_routine(*a, ac, av, 5);
-		parse_stk(a, new, nbr);
+		parse_stack(a, new, nbr);
 		i++;
 	}
 }
 
-void	parse_stk(t_stk **a, t_stk *new, int nbr)
+void	parse_stack(t_stk **a, t_stk *new, int nbr)
 {
 	t_stk	*last;
 
@@ -71,19 +71,19 @@ void	parse_stk(t_stk **a, t_stk *new, int nbr)
 	}
 }
 
-void	sort_stk(t_stk **a, t_stk **b)
+void	sort_stack(t_stk **a, t_stk **b)
 {
 	int	size;
 
-	if (!chk_srt(*a))
+	if (!check_sort(*a))
 	{
-		size = size_stk(*a);
+		size = stack_size(*a);
 		if (size == 2)
 			sort_two(a);
 		else if (size == 3)
-			sort_thr(a);
+			sort_three(a);
 		else if (size > 3 && size < 50)
-			sort_siz(a, b, size);
+			sort_size(a, b, size);
 		else
 			radix_sort(a, b, size - 1);
 	}
