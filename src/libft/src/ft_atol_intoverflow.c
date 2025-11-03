@@ -6,7 +6,7 @@
 /*   By: lbraga <lbraga@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 16:12:06 by lbraga            #+#    #+#             */
-/*   Updated: 2025/11/03 19:04:56 by lbraga           ###   ########.fr       */
+/*   Updated: 2025/11/03 20:51:33 by lbraga           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ long	ft_atol_intoverflow(const char *nptr)
 		if (*(nptr++) == '-')
 			s = -s;
 	while (ft_isdigit(*nptr))
-	{		
+	{
 		r = (r * 10) + (*(nptr++) - '0');
 		if (r * s > INT_MAX || r * s < INT_MIN)
 			return (LONG_MAX);
